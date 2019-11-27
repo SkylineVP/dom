@@ -47,43 +47,34 @@ const _users = [
                 name: SOCIAL_NETWORKS.TWITTER,
                 href: "https://twitter.com/therock",
             },
-            {
-                name: SOCIAL_NETWORKS.FACEBOOK,
-                href: "#",
-            },
+
             {
                 name: SOCIAL_NETWORKS.INSTAGRAM,
                 href: "https://www.instagram.com/therock/",
             },
-            {
-                name: SOCIAL_NETWORKS.ANGULAR,
-                href: "#",
-            },
+
         ]
     },
     {
         id: 3,
-        name: "",
-        surname: "Михайлов",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        imageSrc: "https://24smi.org/public/media/celebrity/2019/01/29/eblteapobq9j-stas-mikhailov.jpg",
+        name: "Роберт",
+        surname: "Дауни — младший",
+        description: "американский актёр, продюсер и музыкант. Лауреат премий «Золотой глобус», BAFTA, «Премии Гильдии киноактёров США» и «Сатурн», номинант на премии «Оскар» и «Эмми». Начал актёрскую карьеру ещё ребёнком, сыграв в фильме своего отца «Загон»",
+        imageSrc: "http://thr.ru/public/article/prephoto/thumb_w320_13205.jpg",
         contacts: [
             {
                 name: SOCIAL_NETWORKS.FACEBOOK,
-                href: "#",
+                href: "https://ru-ru.facebook.com/robertdowneyjr/",
             },
             {
                 name: SOCIAL_NETWORKS.TWITTER,
-                href: "#",
+                href: "https://twitter.com/robertdowneyjr",
             },
             {
                 name: SOCIAL_NETWORKS.INSTAGRAM,
-                href: "#",
+                href: "https://www.instagram.com/robertdowneyjr/?hl=ru",
             },
-            {
-                name: SOCIAL_NETWORKS.ANGULAR,
-                href: "#",
-            },
+
         ]
     },
     {
@@ -136,56 +127,7 @@ const _users = [
             },
         ]
     },
-    {
-        id: 6,
-        name: "Стас",
-        surname: "Михайлов",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        imageSrc: "https://24smi.org/public/media/celebrity/2019/01/29/eblteapobq9j-stas-mikhailov.jpg",
-        contacts: [
-            {
-                name: SOCIAL_NETWORKS.FACEBOOK,
-                href: "#",
-            },
-            {
-                name: SOCIAL_NETWORKS.TWITTER,
-                href: "#",
-            },
-            {
-                name: SOCIAL_NETWORKS.INSTAGRAM,
-                href: "#",
-            },
-            {
-                name: SOCIAL_NETWORKS.ANGULAR,
-                href: "#",
-            },
-        ]
-    },
-    {
-        id: 7,
-        name: "Стас",
-        surname: "Михайлов",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        imageSrc: "https://24smi.org/public/media/celebrity/2019/01/29/eblteapobq9j-stas-mikhailov.jpg",
-        contacts: [
-            {
-                name: SOCIAL_NETWORKS.FACEBOOK,
-                href: "",
-            },
-            {
-                name: SOCIAL_NETWORKS.TWITTER,
-                href: "",
-            },
-            {
-                name: SOCIAL_NETWORKS.INSTAGRAM,
-                href: "",
-            },
-            {
-                name: SOCIAL_NETWORKS.ANGULAR,
-                href: "",
-            },
-        ]
-    },
+
 ];
 
 
@@ -205,7 +147,7 @@ function getUserCardElem({name, surname, description, imageSrc, contacts, id}) {
     imageConteiner.classList.add("imageConteiner");
     userCardWrapper.append(imageConteiner);
 
-    const userImage = document.createElement("img")
+    const userImage = new Image();
     userImage.classList.add("userImage");
     userImage.setAttribute("src", imageSrc ? imageSrc : "");
     userImage.setAttribute("alt", 'user picture');
@@ -256,7 +198,7 @@ function getUserLinkContacts(contacts) {
 }
 
 function createDeleteButton(id) {
-    const deleteButton = document.createElement("img");
+    const deleteButton = new Image();
     deleteButton.classList.add("deleteButton");
     deleteButton.setAttribute("src", "./assets/image/close-circle-outline.png");
     deleteButton.setAttribute("alt", "delete");
@@ -264,8 +206,11 @@ function createDeleteButton(id) {
     deleteButton.addEventListener('click', (event) => {
         event.stopPropagation();
         const userCardWrapper = document.getElementById(id);
-        console.log(id)
-        userCardWrapper.remove();
+        userCardWrapper.classList.add("deleted")
+      setTimeout(() => {
+          userCardWrapper.remove();
+      },700)
+
         return deleteButton;
     });
     return deleteButton;

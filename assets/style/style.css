@@ -7,16 +7,20 @@ body{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 .userName{
     font-weight:bold ;
     margin-top: 10px;
+    text-align: center;
 }
 .userCardWrapper{
+
 
     width: 200px;
     position: relative;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
@@ -26,6 +30,8 @@ body{
     box-sizing: border-box;
     padding: 10px;
     font-family: sans-serif;
+    transition-property:all;
+    transition-duration: 700ms;
 }
 .imageConteiner{
     border-radius: 50%;
@@ -49,6 +55,7 @@ body{
     text-align: center;
     max-height: 2.4rem;
     line-height: 1.2rem;
+    margin-bottom: 5px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: normal;
@@ -91,5 +98,9 @@ body{
     position: absolute;
     bottom: -50px;
     cursor: pointer;
+}
+.deleted{
+    transform: scale(0,0);
+
 }
 
